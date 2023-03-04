@@ -1,0 +1,7 @@
+beautifulsoup4
+Pillow
+ffmpy
+feedparser
+aiohttp
+versioneer
+filetype
