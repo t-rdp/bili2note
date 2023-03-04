@@ -7,7 +7,7 @@ async def post(text, files=[]):
     await client.http.login()
     api = client.api
     note = await api.note.action.send(text, files=files)
-    client.http.close_session()
+    await client.http.close_session()
     return note
 
 async def upload(path):
@@ -15,5 +15,5 @@ async def upload(path):
     await client.http.login()
     api = client.api
     file = await api.drive.file.action.upload_file(path)
-    client.http.close_session()
+    await client.http.close_session()
     return file
