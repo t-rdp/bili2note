@@ -9,7 +9,7 @@ from .get_config import GetConfig
 
 def Feed2Toot(feed_data):
   if path.exists(GetConfig()["BILI"]["Db"]):
-    historyList = [line.rstrip('\n') for line in GetConfig()["BILI"]["Db"]]
+    historyList = [line.rstrip('\n') for line in open(GetConfig()["BILI"]["Db"])]
   else:
     historyList = []
 

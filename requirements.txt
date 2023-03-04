@@ -5,3 +5,4 @@ feedparser
 aiohttp
 versioneer
 filetype
+git+ssh://git@github.com/yupix/MiPAC.git
