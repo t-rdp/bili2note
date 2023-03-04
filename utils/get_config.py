@@ -1,7 +1,11 @@
 import configparser
+import sys
 
 config = configparser.ConfigParser()
-config.read('conf.ini')
+try:
+  config.read(sys.argv[1] or 'conf.ini')
+except:
+  config.read('conf.ini')
 
 def GetConfig():
   for i in config:
