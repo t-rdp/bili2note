@@ -5,9 +5,10 @@ import shutil
 from .feed_decoder import TweetDecoder
 from .media_downloader import MediaDownloader
 from .note_poster import TootPoster
+from .get_config import GetConfig
 
 def Feed2Toot(feed_data):
-  if path.exists('db.txt'):
+  if path.exists(GetConfig()["BILI"]["Db"]):
     historyList = [line.rstrip('\n') for line in open('db.txt')]
   else:
     historyList = []
@@ -39,7 +40,7 @@ def Feed2Toot(feed_data):
       shutil.rmtree('temp')
 
     print('INFO: save to db ' + tweet['id'])
-    with open('db.txt', 'w+') as db:
+    with open(GetConfig()["BILI"]["Db"], 'w+') as db:
       for row in historyList:
         db.write(str(row) + '\n')
 
