@@ -12,6 +12,12 @@ def Feed2Toot(feed_data):
     historyList = [line.rstrip('\n') for line in open(GetConfig()["BILI"]["Db"])]
   else:
     historyList = []
+  
+  if historyList == []:
+    print("INFO: First start, dry run")
+    dryrun = True
+  else:
+    dryrun = False
 
   for tweet in reversed(feed_data):
     if not path.exists('temp'):
@@ -30,7 +36,7 @@ def Feed2Toot(feed_data):
         #   print(e)
       print('INFO: post note ' + tweet['id'])
       try:
-        TootPoster(toot_content)
+        if not dryrun: TootPoster(toot_content)
         print('INFO: post succeed ' + tweet['id'])
       except Exception:
         print('ERRO: post failed ' + tweet['id'])
